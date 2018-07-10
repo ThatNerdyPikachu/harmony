@@ -5,15 +5,6 @@ import (
 	"strings"
 )
 
-type CommandHandler struct {
-	prefix string
-	commands []Command
-}
-
-type Command struct {
-	name string
-	function func(s *discordgo.Session, m *discordgo.MessageCreate, args []string)
-}
 
 func NewHandler(prefix string) (CommandHandler) {
 	return CommandHandler{prefix, []Command{}}
