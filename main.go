@@ -1,4 +1,4 @@
-package commands
+package harmony
 
 import (
 	"github.com/bwmarrin/discordgo"
