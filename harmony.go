@@ -11,9 +11,13 @@ import (
 )
 
 // New creates a new CommandHandler
-func New(prefix string) *CommandHandler {
+func New(prefix string, ignoreBots bool) *CommandHandler {
 
-	return &CommandHandler{prefix, []Command{}}
+	return &CommandHandler{
+		Prefix:     prefix,
+		Commands:   []*Command{},
+		IgnoreBots: ignoreBots,
+	}
 
 }
 
@@ -45,9 +49,9 @@ func (h *CommandHandler) OnMessage(s *discordgo.Session, m *discordgo.MessageCre
 
 	}
 
-	if h.OnMessage != nil {
+	if h.OnMessageHandler != nil {
 
-		go h.OnMessage(s, m)
+		go h.OnMessageHandler(s, m)
 
 	}
 
