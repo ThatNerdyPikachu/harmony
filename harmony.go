@@ -15,7 +15,7 @@ func New(prefix string, ignoreBots bool) *CommandHandler {
 
 	return &CommandHandler{
 		Prefix:     prefix,
-		Commands:   []*Command{},
+		Commands:   map[string]*Command{},
 		IgnoreBots: ignoreBots,
 	}
 
