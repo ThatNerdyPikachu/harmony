@@ -55,6 +55,16 @@ func (h *CommandHandler) OnMessage(s *discordgo.Session, m *discordgo.MessageCre
 
 	}
 
+	if h.PreCommandHandler != nil {
+
+		if !h.PreCommandHandler(s, m) {
+
+			return
+
+		}
+
+	}
+
 	if command, ok := h.Commands[strings.ToLower(splitMessage[0][len(h.Prefix):])]; ok {
 
 		command.Run(s, m, splitMessage[1:])
