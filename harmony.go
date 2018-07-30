@@ -43,15 +43,15 @@ func (h *CommandHandler) OnMessage(s *discordgo.Session, m *discordgo.MessageCre
 
 	splitMessage := strings.Split(m.Content, " ")
 
-	if m.Author.Bot && h.IgnoreBots {
-
-		return
-
-	}
-
 	if h.OnMessageHandler != nil {
 
 		go h.OnMessageHandler(s, m)
+
+	}
+
+	if m.Author.Bot && h.IgnoreBots {
+
+		return
 
 	}
 
