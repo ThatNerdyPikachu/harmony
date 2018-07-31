@@ -55,6 +55,12 @@ func (h *CommandHandler) OnMessage(s *discordgo.Session, m *discordgo.MessageCre
 
 	}
 
+	if len(splitMessage[0]) < (len(h.Prefix) + 1) {
+
+		return
+
+	}
+
 	if h.PreCommandHandler != nil {
 
 		if !h.PreCommandHandler(s, m) {
