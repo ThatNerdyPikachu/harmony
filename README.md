@@ -1,2 +1,3 @@
 # harmony
-A WIP Discordgo command handler
+
+an extremely easy-to-use and quick command handler for discordgo
