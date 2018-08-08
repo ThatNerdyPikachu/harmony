@@ -6,8 +6,10 @@ Package harmony provides an easy to use command handler for discordgo
 package harmony
 
 import (
-	"github.com/bwmarrin/discordgo"
+	// internals
 	"strings"
+	// externals
+	"github.com/bwmarrin/discordgo"
 )
 
 // New creates a new CommandHandler
@@ -68,6 +70,12 @@ func (h *CommandHandler) OnMessage(s *discordgo.Session, m *discordgo.MessageCre
 			return
 
 		}
+
+	}
+
+	if splitMessage[0][0:len(h.Prefix)] != h.Prefix {
+
+		return
 
 	}
 
